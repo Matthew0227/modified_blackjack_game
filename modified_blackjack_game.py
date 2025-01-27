@@ -394,21 +394,10 @@ if gamemode == '4':
         print(f"Player 2 have {player2_chips} chips.")
         while True:
             try:
-                bet_player1 = int(input("Player 1 place your bet: "))
-                if bet_player1 > chips or bet_player1 <= 20:
+                bet = int(input("Place the agreed upon bet: "))
+                if bet > player1_chips and bet > player2_chips or bet <= 20:
                     print("Invalid bet amount. Please bet within your available chips.")
-                elif bet_player1 <= 20:
-                    print("Invalid bet amount. The minimum bet is 20.")
-                else:
-                    break
-            except ValueError:
-                print("Please enter a valid number.")
-        while True:
-            try:
-                bet_player2 = int(input("Player 2 place your bet: "))
-                if bet_player2 > chips or bet_player2 <= 20:
-                    print("Invalid bet amount. Please bet within your available chips.")
-                elif bet_player2 <= 20:
+                elif bet <= 20:
                     print("Invalid bet amount. The minimum bet is 20.")
                 else:
                     break
@@ -420,9 +409,11 @@ if gamemode == '4':
             deal_card(player_hand)
 
         while player_in or dealer_in:
-            print(f"You have {player_hand} for a total of {total(player_hand)}")
+            
 
             if player_in:
+                print("Player 1".center(width_of_text,"-"))
+                print(f"You have {player_hand} for a total of {total(player_hand)}")
                 stay_or_hit = input("1: Stay\n2: Hit\n")
                 #to prevent the other player from seeing the opposite player's card
                 for i in range(30):
@@ -433,6 +424,8 @@ if gamemode == '4':
                     deal_card(player_hand)
 
             if dealer_in:
+                print("Player 2".center(width_of_text,"-"))
+                print(f"You have {dealer_hand} for a total of {total(dealer_hand)}")
                 stay_or_hit = input("1: Stay\n2: Hit\n")
                 for i in range(30):
                     print("")
@@ -461,12 +454,16 @@ if gamemode == '4':
         if total(player_hand) <= 21 and total(dealer_hand) <= 21:
             if total(player_hand) > total(dealer_hand):
                 print(f"Player 1 wins!")
-                chips += bet
-                wins += 1
+                player1_chips += bet
+                player2_losses += 1
+                player2_chips -= bet
+                player1_wins += 1
             elif total(player_hand) < total(dealer_hand):
                 print(f"Player 2 wins!")
-                chips -= bet
-                losses += 1
+                player1_chips -= bet
+                player1_losses += 1
+                player2_chips += bet
+                player2_wins += 1
             else:
                 print("It's a tie!")
                 ties += 1
@@ -483,10 +480,7 @@ if gamemode == '4':
                 break
             else:
                 print("enter y/n: ")
-        if chips == 0 or chips < 20:
-            print("it seems like you don't have enough chips to continue,")
-            print("here's 200 chips on the house, welcome!")
-            chips += 200
+        
         if continue_game != 'y':
                 break
         
