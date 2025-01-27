@@ -107,7 +107,7 @@ if gamemode == '1':
         while True:
             try:
                 bet = int(input("Place your bet: "))
-                if bet > chips or bet <= 20:
+                if bet > chips:
                     print("Invalid bet amount. Please bet within your available chips.")
                 elif bet < 20:
                     print("Invalid bet amount. The minimum bet is 20.")
@@ -121,8 +121,8 @@ if gamemode == '1':
             deal_card(player_hand)
 
         while player_in or dealer_in:
+            print(f"Dealer shows: {reveal_dealer_hand()} and X")
             if player_in:
-                print(f"Dealer shows: {reveal_dealer_hand()} and X")
                 print(f"You have {player_hand} for a total of {total(player_hand)}")
                 stay_or_hit = input("1: Stay\n2: Hit\n")
                 if stay_or_hit == '1':
@@ -185,8 +185,9 @@ if gamemode == '1':
 
 if gamemode == '2':
     print("\n🎲 Starting Survival Mode!".center(width_of_text))
-    print("Let's see how many wins you could do before your chips runs out".center(width_of_text))
-    print("Winning won't earn your bets, you can only lose your chips".center(width_of_text))
+    print("Let's see how many wins you could do before your hp runs out".center(width_of_text))
+    print("Winning won't heal you back, you can only lose your hp".center(width_of_text))
+    print("You lose 100 hp each time you lose".center(width_of_text))
     print("Goodluck playah".center(width_of_text))
     print("=" * width_of_text)
 
@@ -199,26 +200,17 @@ if gamemode == '2':
         dealer_in = True
 
         print(f"round {rounds_played}")
-        print(f"You have {chips} chips.")
-        while True:
-            try:
-                bet = int(input("Place your bet: "))
-                if bet > chips:
-                    print("Invalid bet amount. Please bet within your available chips.")
-                elif bet < 20:
-                    print("Invalid bet amount. The minimum bet is 20.")
-                else:
-                    break
-            except ValueError:
-                print("Please enter a valid number.")
+        print(f"You have {chips} hp.")
+        
+        bet = 100
 
         for _ in range(2):
             deal_card(dealer_hand)
             deal_card(player_hand)
 
         while player_in or dealer_in:
+            print(f"Dealer shows: {reveal_dealer_hand()} and X")
             if player_in:
-                print(f"Dealer shows: {reveal_dealer_hand()} and X")
                 print(f"You have {player_hand} for a total of {total(player_hand)}")
                 stay_or_hit = input("1: Stay\n2: Hit\n")
                 if stay_or_hit == '1':
@@ -239,7 +231,6 @@ if gamemode == '2':
                 break
             elif total(dealer_hand) > 21:
                 print(f"Dealer busts! You win!")
-                chips += bet
                 wins += 1
                 rounds_played += 1
                 break
@@ -257,10 +248,10 @@ if gamemode == '2':
                 ties += 1
             rounds_played += 1
 
-        print(f"Current chips: {chips}")
+        print(f"Current hp: {chips}")
 
         if chips == 0 or chips < 20:
-            print("it seems like you've run out of chips")
+            print("it seems like you've run out of hp")
             print("Tough luck, game over")
             break
 
@@ -307,10 +298,9 @@ if gamemode == '3':
             deal_card(player_hand)
 
         while player_in or dealer_in:
-
+            print(f"Dealer shows: {hidden_hand(dealer_hand)}")
 
             if player_in:
-                print(f"Dealer shows: {hidden_hand(dealer_hand)}")
                 print(f"You have {hidden_hand(player_hand)} for a total of ?")
                 stay_or_hit = input("1: Stay\n2: Hit\n")
                 if stay_or_hit == '1':
