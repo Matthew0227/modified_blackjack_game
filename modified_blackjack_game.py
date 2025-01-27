@@ -1,10 +1,6 @@
 import random
-#adding 2 variation of blackjack game for gamemode
-#Atlantic City Blackjack:
-#Vegas Strip Blackjack:
-#I'll add a betting system, a given amount of cash when you've started
-#After the player stops playing, It'll display the statistics of the overall gameplay
-#the total amount of played, how many times you've played in each variation, total win and lose, money at the end
+#NEW: Statistics: win, lose, ties, chips, rounds
+#NEW: 4 gamemodes: classic, survival, blinded, multiplayer (2players)
 
 
 #this tells that the player and dealer is playing at the beginning of the game
@@ -96,7 +92,6 @@ while True:
     else:
         break
 
-# Classic Mode Gameplay Core
 if gamemode == '1':
     print("\n🎲 Starting Classic Mode!")
     chips = 1000
