@@ -121,10 +121,9 @@ if gamemode == '1':
             deal_card(player_hand)
 
         while player_in or dealer_in:
-            print(f"Dealer shows: {reveal_dealer_hand()} and X")
-            print(f"You have {player_hand} for a total of {total(player_hand)}")
-
             if player_in:
+                print(f"Dealer shows: {reveal_dealer_hand()} and X")
+                print(f"You have {player_hand} for a total of {total(player_hand)}")
                 stay_or_hit = input("1: Stay\n2: Hit\n")
                 if stay_or_hit == '1':
                     player_in = False
@@ -218,10 +217,9 @@ if gamemode == '2':
             deal_card(player_hand)
 
         while player_in or dealer_in:
-            print(f"Dealer shows: {reveal_dealer_hand()} and X")
-            print(f"You have {player_hand} for a total of {total(player_hand)}")
-
             if player_in:
+                print(f"Dealer shows: {reveal_dealer_hand()} and X")
+                print(f"You have {player_hand} for a total of {total(player_hand)}")
                 stay_or_hit = input("1: Stay\n2: Hit\n")
                 if stay_or_hit == '1':
                     player_in = False
@@ -309,10 +307,11 @@ if gamemode == '3':
             deal_card(player_hand)
 
         while player_in or dealer_in:
-            print(f"Dealer shows: {hidden_hand(dealer_hand)}")
-            print(f"You have {hidden_hand(player_hand)} for a total of ?")
+
 
             if player_in:
+                print(f"Dealer shows: {hidden_hand(dealer_hand)}")
+                print(f"You have {hidden_hand(player_hand)} for a total of ?")
                 stay_or_hit = input("1: Stay\n2: Hit\n")
                 if stay_or_hit == '1':
                     player_in = False
@@ -390,7 +389,7 @@ if gamemode == '4':
         while True:
             try:
                 bet = int(input("Place the agreed upon bet: "))
-                if bet > player1_chips and bet > player2_chips
+                if bet > player1_chips and bet > player2_chips:
                     print("Invalid bet amount. Please bet within your available chips.")
                 elif bet < 20:
                     print("Invalid bet amount. The minimum bet is 20.")
@@ -404,7 +403,6 @@ if gamemode == '4':
             deal_card(player_hand)
 
         while player_in or dealer_in:
-            
 
             if player_in:
                 print("Player 1".center(width_of_text,"-"))
