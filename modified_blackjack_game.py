@@ -2,8 +2,15 @@ import random
 #NEW: Statistics: win, lose, ties, chips, rounds
 #NEW: 4 gamemodes: classic, survival, blinded, multiplayer (2players)
 
+deck = [2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',]
 
-#this tells that the player and dealer is playing at the beginning of the game
 player_in = True
 dealer_in = True
 chips = 0
@@ -32,8 +39,6 @@ deck = [2, 3, 4, 5, 6, 7, 8, 9, 10,
 
 player_hand = []
 dealer_hand = []
-# deal the cards
-
 
 
 def game_intro():
@@ -96,7 +101,16 @@ if gamemode == '1':
     print("\n🎲 Starting Classic Mode!")
     chips = 1000
     while True:
-       
+        
+        deck = [2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',]
+
         player_hand = []
         dealer_hand = []
         player_in = True
@@ -121,8 +135,8 @@ if gamemode == '1':
             deal_card(player_hand)
 
         while player_in or dealer_in:
-            print(f"Dealer shows: {reveal_dealer_hand()} and X")
             if player_in:
+                print(f"Dealer shows: {reveal_dealer_hand()} and X")
                 print(f"You have {player_hand} for a total of {total(player_hand)}")
                 stay_or_hit = input("1: Stay\n2: Hit\n")
                 if stay_or_hit == '1':
@@ -134,6 +148,9 @@ if gamemode == '1':
                 dealer_in = False
             else:
                 deal_card(dealer_hand)
+            
+            if not player_in and not dealer_in:
+                print(f"Dealer have {dealer_hand} for a total of {total(dealer_hand)}")
 
             if total(player_hand) > 21:
                 print(f"You bust! Dealer wins")
@@ -142,6 +159,7 @@ if gamemode == '1':
                 rounds_played += 1
                 break
             elif total(dealer_hand) > 21:
+                print(f"Dealer have {dealer_hand} for a total of {total(dealer_hand)}")
                 print(f"Dealer busts! You win!")
                 chips += bet
                 wins += 1
@@ -172,10 +190,11 @@ if gamemode == '1':
                 break
             else:
                 print("enter y/n: ")
-        if chips == 0 or chips < 20:
-            print("it seems like you don't have enough chips to continue,")
-            print("here's 200 chips on the house, welcome!")
-            chips += 200
+        if continue_game == 'y':
+            if chips == 0 or chips < 20:
+                print("it seems like you don't have enough chips to continue,")
+                print("here's 200 chips on the house, welcome!")
+                chips += 200
         if continue_game != 'y':
                 break
         
@@ -194,6 +213,15 @@ if gamemode == '2':
     chips = 1000
     while True:
        
+        deck = [2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',]
+
         player_hand = []
         dealer_hand = []
         player_in = True
@@ -209,8 +237,9 @@ if gamemode == '2':
             deal_card(player_hand)
 
         while player_in or dealer_in:
-            print(f"Dealer shows: {reveal_dealer_hand()} and X")
+            
             if player_in:
+                print(f"Dealer shows: {reveal_dealer_hand()} and X")
                 print(f"You have {player_hand} for a total of {total(player_hand)}")
                 stay_or_hit = input("1: Stay\n2: Hit\n")
                 if stay_or_hit == '1':
@@ -223,6 +252,9 @@ if gamemode == '2':
             else:
                 deal_card(dealer_hand)
 
+            if not player_in and not dealer_in:
+                print(f"Dealer have {dealer_hand} for a total of {total(dealer_hand)}")
+
             if total(player_hand) > 21:
                 print(f"You bust! Dealer wins")
                 chips -= bet
@@ -230,6 +262,7 @@ if gamemode == '2':
                 rounds_played += 1
                 break
             elif total(dealer_hand) > 21:
+                print(f"Dealer have {dealer_hand} for a total of {total(dealer_hand)}")
                 print(f"Dealer busts! You win!")
                 wins += 1
                 rounds_played += 1
@@ -271,9 +304,23 @@ if gamemode == '2':
 
 if gamemode == '3':
     print("\n🎲 Starting Blinded Mode!")
+    print("Lets see what kind of gambler you are at this game mode".center(width_of_text))
+    print("You won't see your card while playing this".center(width_of_text))
+    print("It will only revealed once either one of you wins".center(width_of_text))
+    print("Goodluck playah".center(width_of_text))
+    print("=" * width_of_text)
     chips = 1000
     while True:
-       
+        
+        deck = [2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',]
+
         player_hand = []
         dealer_hand = []
         player_in = True
@@ -283,8 +330,8 @@ if gamemode == '3':
         print(f"You have {chips} chips.")
         while True:
             try:
-                bet_player1 = int(input("Place your bet: "))
-                if bet_player1 > chips:
+                bet = int(input("Place your bet: "))
+                if bet > chips:
                     print("Invalid bet amount. Please bet within your available chips.")
                 elif bet < 20:
                     print("Invalid bet amount. The minimum bet is 20.")
@@ -298,9 +345,9 @@ if gamemode == '3':
             deal_card(player_hand)
 
         while player_in or dealer_in:
-            print(f"Dealer shows: {hidden_hand(dealer_hand)}")
 
             if player_in:
+                print(f"Dealer shows: {hidden_hand(dealer_hand)}")
                 print(f"You have {hidden_hand(player_hand)} for a total of ?")
                 stay_or_hit = input("1: Stay\n2: Hit\n")
                 if stay_or_hit == '1':
@@ -313,13 +360,21 @@ if gamemode == '3':
             else:
                 deal_card(dealer_hand)
 
+            if not player_in and not dealer_in:
+                print(f"Dealer have {dealer_hand} for a total of {total(dealer_hand)}")
+                print(f"You have {player_hand} for a total of {total([player_hand])}")
+
             if total(player_hand) > 21:
+                print(f"Dealer have {dealer_hand} for a total of {total(dealer_hand)}")
+                print(f"You have {player_hand} for a total of {total([player_hand])}")
                 print(f"You bust! Dealer wins")
                 chips -= bet
                 losses += 1
                 rounds_played += 1
                 break
             elif total(dealer_hand) > 21:
+                print(f"Dealer have {dealer_hand} for a total of {total(dealer_hand)}")
+                print(f"You have {player_hand} for a total of {total([player_hand])}")
                 print(f"Dealer busts! You win!")
                 chips += bet
                 wins += 1
@@ -340,9 +395,6 @@ if gamemode == '3':
                 ties += 1
             rounds_played += 1
 
-        print("Revealed cards".center(width_of_text))
-        print(f"Dealer shows: {reveal_dealer_hand()} and X")
-        print(f"You have {player_hand} for a total of {total(player_hand)}")
         print(f"Current chips: {chips}")
 
         while True:
@@ -353,10 +405,11 @@ if gamemode == '3':
                 break
             else:
                 print("enter y/n: ")
-        if chips == 0 or chips < 20:
-            print("it seems like you don't have enough chips to continue,")
-            print("here's 200 chips on the house, welcome!")
-            chips += 200
+        if continue_game == 'y':
+            if chips == 0 or chips < 20:
+                print("it seems like you don't have enough chips to continue,")
+                print("here's 200 chips on the house, welcome!")
+                chips += 200
         if continue_game != 'y':
                 break
         
@@ -367,7 +420,16 @@ if gamemode == '4':
     player1_chips = 1000
     player2_chips = 1000
     while True:
-       
+        
+        deck = [2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10,
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',
+        'A', 'J', 'Q', 'K',]
+
         player_hand = []
         dealer_hand = []
         player_in = True
@@ -417,6 +479,10 @@ if gamemode == '4':
                 else:
                     deal_card(dealer_hand)
 
+            if not player_in and not dealer_in:
+                print(f"Player 1 have {player_hand} for a total of {total([player_hand])}")
+                print(f"Player 2 have {dealer_hand} for a total of {total(dealer_hand)}")
+
             if total(player_hand) > 21:
                 print(f"Player 1 bust! Player 2 wins")
                 player1_chips -= bet
@@ -454,6 +520,13 @@ if gamemode == '4':
 
         print(f"Player 1 chips: {player1_chips}")
         print(f"Player 2 chips: {player2_chips}")
+
+        if player1_chips == 0:
+            print("Player 2 won the game!".center(width_of_text,"="))
+            break
+        elif player2_chips == 0:
+            print("Player 1 won the game!".center(width_of_text,"="))
+            break
 
         while True:
             continue_game = input("Keep playing? (y/n): ").lower()
