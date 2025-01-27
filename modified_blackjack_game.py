@@ -481,7 +481,7 @@ if gamemode == '4':
         
     print("\n🎉 Thanks for playing Multiplayer Mode!".center(width_of_text))
 
-if gamemode == [1,2,3]:
+if gamemode in ["1","2","3"]:
     print("=" * width_of_text)
     print("📊 Game Statistics:".center(width_of_text))
     print(f"Total Rounds Played: {rounds_played}".ljust(width_of_text // 2).center(width_of_text))
@@ -490,7 +490,7 @@ if gamemode == [1,2,3]:
     print(f"Total Ties: {ties}".ljust(width_of_text // 2).center(width_of_text))
     print(f"Final Chips: {chips}".ljust(width_of_text // 2).center(width_of_text))
     print("=" * width_of_text)
-else:
+elif gamemode == "4":
     print("=" * width_of_text)
     print("📊 Game Statistics:".center(width_of_text))
     print(f"Total Rounds Played: {rounds_played}".ljust(width_of_text // 2).center(width_of_text))
