@@ -109,7 +109,7 @@ if gamemode == '1':
                 bet = int(input("Place your bet: "))
                 if bet > chips or bet <= 20:
                     print("Invalid bet amount. Please bet within your available chips.")
-                elif bet <= 20:
+                elif bet < 20:
                     print("Invalid bet amount. The minimum bet is 20.")
                 else:
                     break
@@ -204,9 +204,9 @@ if gamemode == '2':
         while True:
             try:
                 bet = int(input("Place your bet: "))
-                if bet > chips or bet <= 20:
+                if bet > chips:
                     print("Invalid bet amount. Please bet within your available chips.")
-                elif bet <= 20:
+                elif bet < 20:
                     print("Invalid bet amount. The minimum bet is 20.")
                 else:
                     break
@@ -295,9 +295,9 @@ if gamemode == '3':
         while True:
             try:
                 bet_player1 = int(input("Place your bet: "))
-                if bet_player1 > chips or bet <= 20:
+                if bet_player1 > chips:
                     print("Invalid bet amount. Please bet within your available chips.")
-                elif bet <= 20:
+                elif bet < 20:
                     print("Invalid bet amount. The minimum bet is 20.")
                 else:
                     break
@@ -390,9 +390,9 @@ if gamemode == '4':
         while True:
             try:
                 bet = int(input("Place the agreed upon bet: "))
-                if bet > player1_chips and bet > player2_chips or bet <= 20:
+                if bet > player1_chips and bet > player2_chips
                     print("Invalid bet amount. Please bet within your available chips.")
-                elif bet <= 20:
+                elif bet < 20:
                     print("Invalid bet amount. The minimum bet is 20.")
                 else:
                     break
